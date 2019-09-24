@@ -35,15 +35,34 @@ public class AppController {
 	}
 	
 	@RequestMapping(value = "/add_contact", method = RequestMethod.GET)
-	public String addContact() {
+	public String goAddContact() {
 		return "addingcontact";
 	}
 	
 	@RequestMapping(value = "/add_contact", method = RequestMethod.POST)
-	public String setContact(@RequestParam int id, @RequestParam String name, @RequestParam String email, @RequestParam String country, Model model) {
+	public String addContact(@RequestParam int id, @RequestParam String name, @RequestParam String email, @RequestParam String country, Model model) {
 		model.addAttribute("data", "Data added!!");
 		model.addAttribute("name", name);
 		repository.save(new Contact(id, name, email, country));	
 		return "addingcontact";
+	}
+	
+	@RequestMapping(value = "/delete_contact", method = RequestMethod.GET)
+	public String goDeleteContactPage() {
+		return "deletingcontact";
+	}
+	
+	@RequestMapping(value = "/delete_contact", method = RequestMethod.POST)
+	public String deleteContact(@RequestParam int id, Model model) {
+		if(repository.existsById(id)) {
+			repository.deleteById(id);
+			model.addAttribute("delete", "Deleted!!");
+			return "deletingcontact";
+		}
+		else {
+			model.addAttribute("errorMessage", "The contact corresponding to id does not exist!!");
+			return "deletingcontact";
+		}
+		
 	}
 }
