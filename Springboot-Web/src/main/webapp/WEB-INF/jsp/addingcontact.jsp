@@ -9,6 +9,7 @@
 <body>
 	
 	<p>${data}</p>
+	<p>${errorMessage}</p>
 	<p>${name}</p>
 	
 	<form action="/add_contact" method="post">
