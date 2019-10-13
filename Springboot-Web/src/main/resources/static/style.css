@@ -1,0 +1,31 @@
+@charset "ISO-8859-1";
+
+html, body {
+	height: 100%;
+}
+
+.wrapper {
+	background-color: lightblue;
+	border: 1px solid;
+	width: 1000px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+header {
+	margin-top: 150px;
+	margin-bottom: 50px;
+	color: black;
+	text-align: center;
+	font-size: 70px;
+	font-style: italic;
+}
+
+li {
+	margin-left: 200px;
+	font-size: 40px;
+}
+
+a {
+	text-decoration: none;
+}
